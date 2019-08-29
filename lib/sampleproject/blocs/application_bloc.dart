@@ -1,4 +1,10 @@
-import 'dart:async';
-import 'dart:collection';
+import '../blocs/bloc_provider.dart';
 
-class Application implements
+class Application implements BlocBase{
+
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+  }
+}
