@@ -61,3 +61,5 @@ class TheMovieDBApi {
     return response.transform(utf8.decoder).join();
   }
 }
+
+TheMovieDBApi theMovieDBApi = TheMovieDBApi();
