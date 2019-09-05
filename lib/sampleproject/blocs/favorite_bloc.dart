@@ -44,7 +44,7 @@ class FavoriteBloc implements BlocBase {
   }
 
   void _handleAddFavorite(MovieCard movieCard) {
-    // Add the movie to the list of favorite ones
+
     _favorites.add(movieCard);
 
     _notify();
@@ -57,11 +57,9 @@ class FavoriteBloc implements BlocBase {
   }
 
   void _notify() {
-    // Send to whomever is interested...
-    // The total number of favorites
+
     _inTotalFavorites.add(_favorites.length);
 
-    // The new list of all favorite movies
     _inFavorites.add(UnmodifiableListView(_favorites));
   }
 }

@@ -6,7 +6,7 @@ import '../blocs/bloc_provider.dart';
 import '../models/movie_genre.dart';
 import '../models/movie_genre_list.dart';
 
-class Application implements BlocBase {
+class ApplicationBloc implements BlocBase {
   MovieGenresList _movieGenresList;
 
   StreamController<List<MovieGenre>> _syncController =
@@ -24,8 +24,10 @@ class Application implements BlocBase {
       _movieGenresList = list;
     });
 
-    _cmdController.sink
-        .add(UnmodifiableListView<MovieGenre>(_movieGenresList.genres));
+    _cmdController.stream.listen((_) {
+      _syncController.sink
+          .add(UnmodifiableListView<MovieGenre>(_movieGenresList.genres));
+    });
   }
 
   @override

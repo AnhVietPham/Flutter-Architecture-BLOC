@@ -6,7 +6,7 @@ import '../models/movie_genre_list.dart';
 import '../models/movie_page_result.dart';
 
 class TheMovieDBApi {
-  static const String TMDB_API_KEY = "PUT YOUR KEY, HERE";
+  static const String TMDB_API_KEY = "c078a4981c16977740fa52596feb1c85";
   static const String baseUrl = 'api.themoviedb.org';
   final String imageBaseUrl = 'http://image.tmdb.org/t/p/w185/';
   final _httpClient = HttpClient();
