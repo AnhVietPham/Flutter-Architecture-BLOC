@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_architecture_bloc/sampleproject/blocs/bloc_provider.dart';
 import 'package:flutter_architecture_bloc/sampleproject/blocs/favorite_bloc.dart';
+import 'package:flutter_architecture_bloc/sampleproject/pages/favorites.dart';
 
 class FavoriteButton extends StatelessWidget {
   FavoriteButton({
@@ -15,10 +16,10 @@ class FavoriteButton extends StatelessWidget {
     final FavoriteBloc favoriteBloc = BlocProvider.of<FavoriteBloc>(context);
     return RaisedButton(
       onPressed: () {
-        Navigator.of(context).push(
-            MaterialPageRoute(builder: (BuildContext context) {
-              return
-            }));
+        Navigator.of(context)
+            .push(MaterialPageRoute(builder: (BuildContext context) {
+          return FavoritesPage();
+        }));
       },
       child: Stack(
         overflow: Overflow.visible,
