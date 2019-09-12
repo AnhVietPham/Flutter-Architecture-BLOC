@@ -22,38 +22,47 @@ class MovieCatalogBloc implements BlocBase {
   PublishSubject<List<MovieCard>> _moviesController =
       PublishSubject<List<MovieCard>>();
 
-  Sink<List<MovieCard>> get _inMoviesList => _moviesController.sink;
-
-  Stream<List<MovieCard>> get outMoviesList => _moviesController.stream;
-
   PublishSubject<int> _indexController = PublishSubject<int>();
-
-  Sink<int> get inMovieIndex => _indexController.sink;
 
   BehaviorSubject<int> _totalMoviesController =
       BehaviorSubject<int>(seedValue: 0);
+
   BehaviorSubject<List<int>> _releaseDatesController =
       BehaviorSubject<List<int>>(seedValue: <int>[2000, 2005]);
+
   BehaviorSubject<int> _genreController = BehaviorSubject<int>(seedValue: 28);
-
-  Sink<int> get _inTotalMovies => _totalMoviesController.sink;
-
-  Stream<int> get outTotalMovies => _totalMoviesController.stream;
-
-  Sink<List<int>> get _inReleaseDates => _releaseDatesController.sink;
-
-  Stream<List<int>> get outReleaseDates => _releaseDatesController.stream;
-
-  Sink<int> get _inGenre => _genreController.sink;
-
-  Stream<int> get outGenre => _genreController.stream;
 
   BehaviorSubject<MovieFilters> _filtersController =
       BehaviorSubject<MovieFilters>(
           seedValue: MovieFilters(
               genre: 28, minReleaseDate: 2000, maxReleaseDate: 2005));
 
+  ///
+  /// INPUT
+  ///
+
+  Sink<List<MovieCard>> get _inMoviesList => _moviesController.sink;
+
+  Sink<int> get inMovieIndex => _indexController.sink;
+
+  Sink<int> get _inTotalMovies => _totalMoviesController.sink;
+
+  Sink<List<int>> get _inReleaseDates => _releaseDatesController.sink;
+
+  Sink<int> get _inGenre => _genreController.sink;
+
   Sink<MovieFilters> get inFilters => _filtersController.sink;
+
+  ///
+  /// OUTPUT
+  ///
+  Stream<List<MovieCard>> get outMoviesList => _moviesController.stream;
+
+  Stream<int> get outTotalMovies => _totalMoviesController.stream;
+
+  Stream<List<int>> get outReleaseDates => _releaseDatesController.stream;
+
+  Stream<int> get outGenre => _genreController.stream;
 
   Stream<MovieFilters> get outFilters => _filtersController.stream;
 
