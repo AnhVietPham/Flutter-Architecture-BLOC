@@ -10,24 +10,31 @@ class FavoriteBloc implements BlocBase {
   BehaviorSubject<MovieCard> _favoriteAddController =
       BehaviorSubject<MovieCard>();
 
-  Sink<MovieCard> get inAddFavorite => _favoriteAddController.sink;
-
   BehaviorSubject<MovieCard> _favoriteRemoveController =
       BehaviorSubject<MovieCard>();
-
-  Sink<MovieCard> get inRemoveFavorite => _favoriteRemoveController.sink;
 
   BehaviorSubject<int> _favoriteTotalController =
       BehaviorSubject<int>(seedValue: 0);
 
-  Sink<int> get _inTotalFavorites => _favoriteTotalController.sink;
-
-  Stream<int> get outTotalFavorite => _favoriteTotalController.stream;
-
   BehaviorSubject<List<MovieCard>> _favoritesController =
       BehaviorSubject<List<MovieCard>>(seedValue: []);
 
+  ///
+  /// INPUT
+  ///
+
+  Sink<MovieCard> get inAddFavorite => _favoriteAddController.sink;
+
+  Sink<MovieCard> get inRemoveFavorite => _favoriteRemoveController.sink;
+
+  Sink<int> get _inTotalFavorites => _favoriteTotalController.sink;
+
   Sink<List<MovieCard>> get _inFavorites => _favoritesController.sink;
+
+  ///
+  /// OUTPUT
+  ///
+  Stream<int> get outTotalFavorite => _favoriteTotalController.stream;
 
   Stream<List<MovieCard>> get outFavorites => _favoritesController.stream;
 
