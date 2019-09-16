@@ -86,7 +86,44 @@ class MovieCardWidgetState extends State<MovieCardWidget> {
         child: _buildTextualInfo(widget.movieCard),
       ),
     ];
-    return null;
+    children.add(
+      StreamBuilder<bool>(
+          stream: _bloc.outIsFavorite,
+          initialData: false,
+          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
+            if (snapshot.data == true) {
+              return Positioned(
+                top: 0.0,
+                right: 0.0,
+                child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white30,
+                      borderRadius: BorderRadius.circular(50.0),
+                    ),
+                    padding: const EdgeInsets.all(4.0),
+                    child: InkWell(
+                      child: const Icon(
+                        Icons.favorite,
+                        color: Colors.red,
+                      ),
+                      onTap: () {
+                        bloc.inRemoveFavorite.add(widget.movieCard);
+                      },
+                    )),
+              );
+            }
+            return Container();
+          }),
+    );
+    return InkWell(
+      onTap: widget.onPressed,
+      child: Card(
+        child: Stack(
+          fit: StackFit.expand,
+          children: children,
+        ),
+      ),
+    );
   }
 
   BoxDecoration _buildGradientBackground() {
